@@ -1,0 +1,14 @@
+runtime: python39  # Version de Python utilisée
+
+env:
+  PYTHONPATH: "{PYTHONPATH}:."  # Chemin d'accès au code Python
+
+entrypoint: gunicorn -b :$PORT main:app  # Point d'entrée pour le serveur
+
+handlers:
+  - url: /static  # Gestion des fichiers statiques (CSS, images, etc.)
+    static_dir: static
+
+  - url: /.*  # Routage des requêtes vers l'application Flask
+    script: auto
+
