@@ -1,7 +1,6 @@
 runtime: python39  # Version de Python utilisée
 
-env:
-  PYTHONPATH: "{/myenv}:."  # Chemin d'accès au code Python
+env: standard
 
 entrypoint: gunicorn -b :$PORT main:app  # Point d'entrée pour le serveur
 
